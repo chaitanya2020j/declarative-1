@@ -1,0 +1,22 @@
+pipeline{
+    agent any
+    environment{
+        
+        PATH = "/opt/maven/apache-maven-3.8.1/bin:$PATH"
+            }
+    stages{
+        stage('Git-Checkout'){
+            steps{
+            git 'https://github.com/ratnac37/hello-world'
+             }
+        }
+        stage('Maven-Build'){
+            steps{
+                sh "mvn clean package"
+                //sh "mv /var/lib/jenkins/workspace/javaapp/webapp/target/*.war /var/lib/jenkins/workspace/javaapp/webapp/target/myapp.war"
+              }
+        }
+       
+        }
+    }
+}
